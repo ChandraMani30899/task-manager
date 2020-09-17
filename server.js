@@ -6,6 +6,6 @@ var server=http.createServer(app)
 
 var PORT=3000
 
-server.listen(PORT,(req,res)=>{
+server.listen(PORT,'localhost',(req,res)=>{
     console.log('Server started at '+PORT)
 })

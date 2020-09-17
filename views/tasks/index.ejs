@@ -1,14 +1,19 @@
 <%-include ('../shared/header') %>
 <div class="row mt-4">
     <div class="offset-md-2 col-md-6">
-           <ul class="list-group">
-            <li class="list-group-item">NodeJs</li>
-            <li class="list-group-item">MongoDB</li>
-            <li class="list-group-item">JavaScript</li>
-            <li class="list-group-item">EJS</li>
-            <li class="list-group-item">SOCKETIO</li>
-            <li class="list-group-item">JAVA</li>
-           </ul>
+        <h1>Tasks</h1>
+        <hr/>   
+        <ul class="list-group">
+ 
+           <% for(var i=0; i< taskItems.length ; i++) { %>  
+            <li class="list-group-item" >
+                <a class="link" href="/dashboard" style="text-decoration:none">
+                    <%=taskItems[i].title%>
+                <a href="/tasks/delete/<%=taskItems[i]._id%>" class ="btn btn-danger btn-sm float-right">Delete</a>
+                <a class="btn btn-success btn-sm float-right mr-1">Complete</a>
+            </li>
+        <% } %> 
+        </ul>
     </div>
 </div>
 <%-include ('../shared/footer') %>
