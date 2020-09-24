@@ -1,14 +1,17 @@
 var express = require('express')
 var router = express.Router()
+var TaskController = require('../Controllers/TaskController') 
 
-router.get('/', (req, res)=> {
- 
-     res.render('tasks/index')
-})
 
-router.get('/add', (req, res)=>{
-    res.render('tasks/add')
-})
 
+router.get('/', TaskController.getTask)
+
+router.get('/add', TaskController.addTask)
+
+router.get('/delete/:id',TaskController.deleteTask)
+
+router.get('/status/:id',TaskController.updateStatus)
+
+router.post('/store',[TaskController.taskValidation,TaskController.storeTask])
 
 module.exports = router

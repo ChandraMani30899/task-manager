@@ -1,7 +1,7 @@
 var Task=require('../models/Task')
 exports.getDashboard = (req, res) => {
   Task.find()
-    .count()
+    .countDocuments()
     .then(function (totalTask) {
       Task.find({ Completed: true })
         .countDocuments()

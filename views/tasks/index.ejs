@@ -6,11 +6,19 @@
         <ul class="list-group">
  
            <% for(var i=0; i< taskItems.length ; i++) { %>  
-            <li class="list-group-item" >
-                <a class="link" href="/dashboard" style="text-decoration:none">
+                <% if(!taskItems[i].Completed){ %>
+                      <li class="list-group-item" >
+                <% } else { %>
+                    <li class="list-group-item font-italic list-group-item-light" style="text-decoration: line-through">
+                    <% } %>
+                
                     <%=taskItems[i].title%>
                 <a href="/tasks/delete/<%=taskItems[i]._id%>" class ="btn btn-danger btn-sm float-right">Delete</a>
-                <a class="btn btn-success btn-sm float-right mr-1">Complete</a>
+                   <% if(taskItems[i].Completed==false){ %>
+                <a href="/tasks/status/<%=taskItems[i]._id%>" class="btn btn-success btn-sm float-right mr-1" id="status">Complete</a>
+                   <% } else { %>
+                <a href="/tasks/status/<%=taskItems[i]._id%>" class="btn btn-info btn-sm float-right mr-1" id="status">Undo</a>
+                <% } %>
             </li>
         <% } %> 
         </ul>
